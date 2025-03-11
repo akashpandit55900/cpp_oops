@@ -57,6 +57,8 @@ int main() {
 
 
 // Example 2: Overloading of + operator to add two objects
+//c1 + c2 calls c1.operator+(c2), adds the corresponding members from both objects, stores the result in a temporary object, and returns that object to where the addition expression was used.
+//link -> https://chatgpt.com/share/67cff816-46ac-8006-a702-0ef04c3fd92e
 #include <iostream>
 using namespace std;
 

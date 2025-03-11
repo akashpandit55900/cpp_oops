@@ -25,7 +25,7 @@
 // class derived_class_name : access_modifier base_class_name
 // {
 //     // body of the derived class
-// }
+// };
 
 
 // 1) Single Inheritance 

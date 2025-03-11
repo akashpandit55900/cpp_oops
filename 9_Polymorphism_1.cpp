@@ -1,4 +1,16 @@
 /* 
+    A virtual function in C++ is a member function declared in a base class using the virtual keyword, which allows it to be overridden in any derived class. This mechanism supports runtime polymorphism (or dynamic binding), meaning that the decision about which function to call is made at runtime based on the actual type of the object, not the type of the pointer or reference that points to it.
+
+    Key Points
+    1) Declaration:
+    You declare a virtual function in the base class by preceding its declaration with the virtual keyword.
+
+    2) Overriding:
+    In a derived class, you can override the virtual function to provide specialized behavior. Although the override keyword is optional, it is recommended for clarity and compile-time checking.
+
+    3) Dynamic Binding:
+    When you call a virtual function through a base class pointer or reference, C++ determines at runtime which version of the function to invoke (the base or the derived version) based on the actual object type.
+
 
 ** Always remember this: 
     base class pointer can only point to a derived class object. (whatever the base class want, is inside the derived class)
@@ -88,3 +100,26 @@ int main() {
 
     return 0;
 }
+
+/*
+    - Without Virtual Functions (Function Hiding)
+    1) Function Hiding:
+    If the base class method (e.g., draw()) is not marked as virtual, and the derived class defines a method with the same name and signature, the derived version hides the base version.
+
+    2) Pointer Behavior:
+    When you use a base class pointer (e.g., Shape* ptr) that points to a derived class object (e.g., a Circle object), calling ptr->draw() will invoke the base class version. This is because the decision is made at compile time (static binding) based solely on the pointer's type, not on the actual object type.
+
+    3) Accessing the Base Method:
+    You can still call the base class version explicitly using the scope resolution operator (e.g., obj2.Shape::draw();).
+
+    - With Virtual Functions (True Method Overriding)
+    1) Runtime Polymorphism:
+    If the base class method is declared with the virtual keyword, then the derived class method overrides it. This allows dynamic binding at runtime.
+
+    2) Pointer Behavior:
+    With a base class pointer pointing to a derived object, calling the method (e.g., ptr->draw()) will invoke the derived class version, thanks to the virtual mechanism. calls to pointer jisko point kar raha hai
+
+    3) Accessing the Base Method:
+    Once the method is overridden through virtual, a base class pointer calling draw() will always dispatch to the derived class version (if the object is actually of the derived type). To access the parent's version in this scenario, you must explicitly call it with something like obj2.Shape::draw().
+
+*/

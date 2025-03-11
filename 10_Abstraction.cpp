@@ -20,6 +20,9 @@ In C++, abstraction is a concept in object-oriented programming (OOP) that hides
             public:
                 virtual void fun() = 0; // Pure virtual function
         };
+
+    If a class contains at least one pure virtual function, it becomes abstract and cannot be instantiated.
+    Any class inheriting from AbstractClass must provide an implementation for  pure virtual function.
 */
 
 #include <iostream>
@@ -28,6 +31,9 @@ using namespace std;
 class AbstractClass {
 public:
     virtual void display() = 0; // Pure virtual function, making this class abstract
+    void timepass(){
+        cout << "Do nothing\n";
+    }
 };
 
 class DerivedClass : public AbstractClass {
@@ -42,5 +48,6 @@ int main() {
     
     DerivedClass obj;
     obj.display(); // Works as DerivedClass implements display()
+    obj.timepass();
     return 0;
 }

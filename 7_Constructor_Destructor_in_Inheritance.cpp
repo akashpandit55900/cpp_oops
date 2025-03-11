@@ -20,108 +20,108 @@ A destructor is responsible for cleaning up resources when an object is destroye
 */
 
 // Default Base Constructor Called
-// #include <iostream>
-// using namespace std;
+#include <iostream>
+using namespace std;
 
-// class Base {
-// public:
-//     Base() {
-//         cout << "Base constructor called" << endl;
-//     }
-//     ~Base() {
-//         cout << "Base destructor called" << endl;
-//     }
-// };
+class Base {
+public:
+    Base() {
+        cout << "Base constructor called" << endl;
+    }
+    ~Base() {
+        cout << "Base destructor called" << endl;
+    }
+};
 
-// class Derived : public Base {
-// public:
-//     Derived() {
-//         cout << "Derived constructor called" << endl;
-//     }
-//     ~Derived() {
-//         cout << "Derived destructor called" << endl;
-//     }
-// };
+class Derived : public Base {
+public:
+    Derived() {
+        cout << "Derived constructor called" << endl;
+    }
+    ~Derived() {
+        cout << "Derived destructor called" << endl;
+    }
+};
 
-// int main() {
-//     Derived obj;
-//     return 0;
-// }
+int main() {
+    Derived obj;
+    return 0;
+}
 
 
 // ** Calling Parameterized Base Class Constructor:
 // If the base class has a parameterized constructor, you need to explicitly call it from the derived class constructor using an initializer list.
 
 // Example 1 (Allowed ✅)
-// #include <iostream>
-// using namespace std;
+#include <iostream>
+using namespace std;
 
-// class Base {
-// public:
+class Base {
+public:
  
-// };
+};
 
-// class Derived : public Base {
-// public:
+class Derived : public Base {
+public:
 
-//     Derived(int x, int y){
-//         cout << "Derived class constructor with values: " << x << " & " << y << endl;
-//     }
-// };
+    Derived(int x, int y){
+        cout << "Derived class constructor with values: " << x << " & " << y << endl;
+    }
+};
 
-// int main() {
-//     Derived obj(10, 20);
-//     return 0;
-// }
+int main() {
+    Derived obj(10, 20);
+    return 0;
+}
 
 //Example 2:  NOt Allowed (❌)
-// #include <iostream>
-// using namespace std;
+#include <iostream>
+using namespace std;
 
-// class Base {
-// public:
-//     Base(int x) {
-//         cout << "Base class constructor with value: " << x << endl;
-//     }
-// };
+class Base {
+public:
+    Base(int x) {
+        cout << "Base class constructor with value: " << x << endl;
+    }
+};
 
-// class Derived : public Base {
-// public:
-//     Derived(int x, int y){
-//         cout << "Derived class constructor with values: " << x << " & " << y << endl;
-//     }
-// };
+class Derived : public Base {
+public:
+    Derived(int x, int y){
+        cout << "Derived class constructor with values: " << x << " & " << y << endl;
+    }
+};
 
-// int main() {
-//     Derived obj(10, 20);
-//     return 0;
-// }
+int main() {
+    Derived obj(10, 20);
+    return 0;
+}
 
 //Example 3: Allowed (✅)
-// #include <iostream>
-// using namespace std;
+#include <iostream>
+using namespace std;
 
-// class Base {
-// public:
-//     Base(){
-//         cout << "Base class constructor called" << endl;
-//     }
-//     Base(int x) {
-//         cout << "Base class constructor with value: " << x << endl;
-//     }
-// };
+class Base {
+public:
+    Base(){
+        cout << "Base class constructor called" << endl;
+    }
+    Base(int x) {
+        cout << "Base class constructor with value: " << x << endl;
+    }
+};
 
-// class Derived : public Base {
-// public:
-//     Derived(int x, int y){
-//         cout << "Derived class constructor with values: " << x << " & " << y << endl;
-//     }
-// };
+class Derived : public Base {
+public:
+    Derived(int x, int y){
+        cout << "Derived class constructor with values: " << x << " & " << y << endl;
+    }
+};
 
-// int main() {
-//     Derived obj(10, 20);
-//     return 0;
-// }
+int main() {
+    Derived obj(10, 20);
+    return 0;
+}
 
 
 //Example 4: Allowed (✅)
