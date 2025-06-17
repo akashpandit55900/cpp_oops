@@ -4,7 +4,7 @@
         Encapsulation is the phenomenon where data (attributes) and methods (functions) are bundled together within a single unit, i.e., a class. The key idea is to protect the data from being accessed directly from outside the class and instead, control access through member functions.
 
         - wrapping up of data member and member functions in a single unit is called as Encapsulation.
-            single unit is actually a class, 
+        single unit is actually a class, 
         
         - It is used to implement data hiding - achieved  by making use of private access modifiers
         - control access by making proper use of access modifier

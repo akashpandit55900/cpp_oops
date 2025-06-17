@@ -61,9 +61,44 @@ int main() {
     return 0;
 }
 
+/*
+    1. Meaning of Parent::getInfo():
+    This explicitly calls the getInfo() function of the Parent class, even though the Child class has overridden it (method hiding in this case, since it's not virtual).
+
+    2. Meaning of c.Parent::getInfo():
+    Here, c is an object of Child.
+
+    Using c.Parent::getInfo() means:
+
+    "Call the getInfo() function from the Parent class using the Child object c."
+
+    3. Why needed?
+    Normally, when you call c.getInfo(), it calls the Child version.
+
+    But sometimes, you might want to explicitly call the parent class version, and this is how you do it.
+*/
+
 // 2) Second Way: Using Virtual Functions
 // This approach does achieve runtime polymorphism by marking getInfo() as a virtual function in the Parent class.
 //The override keyword is optional but helps improves readability.
+
+/*              
+    Meaning of:  
+        Child c;    
+        Parent *p = &c;
+
+    ✅ Meaning:
+        You're creating a pointer of type Parent* and assigning it the address of a Child object.
+
+        p can only access the members of Parent, unless functions are marked virtual.
+
+    ⚙️ What happens?
+        At compile time, p is treated as a pointer to Parent.
+
+        If getInfo() is virtual, then at runtime, it will call the Child version (this is runtime polymorphism).
+
+        If Greet() is non-virtual, then it will call the Parent version.
+*/
 #include <iostream>
 using namespace std;
 
@@ -91,12 +126,34 @@ public:
 
 int main() {
     // Child c;
-    // Parent* p = &c; // Base class pointer pointing to derived class object
-    Parent* p = new Child(); 
+    Parent* p = &c; // Base class pointer pointing to derived class object
+    // Parent* p = new Child(); //it uses DMA so at end you will need to use delete
     
     p->getInfo(); // Calls Child's getInfo() due to virtual function (runtime polymorphism)
-    //Jab getInfo() call karne jayega tab dikhega ki ye toh vitual function hai toh isse jarur child class ne override kiya hoga, so lets go to child class getInfor();
+    //Jab getInfo() call karne jayega tab dikhega ki ye toh vitual function hai toh isse jarur child class ne override kiya hoga, so lets go to child class getInfo();
     p->Greet();   // Calls Parent's Greet() since Greet() is non-virtual
+
+
+    /*
+        Parent p;
+        p.getInfo();
+        p.Greet();
+
+        Child c;
+        c.getInfo();
+        c.Greet();
+
+        Child c;
+        c.getInfo(); //calls self getInfo()
+        c.Parent::getInfo();  //calls parent class getInfo()
+
+
+        Parent *p = &c;
+        // Parent *p = new Child();
+        p->Greet(); //calls self greet
+        p->getInfo(); //calls derived class getInfo() (virtual function)
+        p->Parent::getInfo(); //calls self getInfo()
+    */
 
     return 0;
 }

@@ -23,6 +23,9 @@ In C++, abstraction is a concept in object-oriented programming (OOP) that hides
 
     If a class contains at least one pure virtual function, it becomes abstract and cannot be instantiated.
     Any class inheriting from AbstractClass must provide an implementation for  pure virtual function.
+
+
+    So, there is no abstract keyword, any class with at least one pure virtual function will be abstract class, and the class that inherit the abstact class, will compulsorily override all those pure virtual functions (if not overrided these methods then the implemented class will again be an abstract class)
 */
 
 #include <iostream>
